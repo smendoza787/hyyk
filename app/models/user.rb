@@ -13,4 +13,12 @@ class User < ApplicationRecord
     self.total_hikes += 1
     self.save
   end
+
+  def longest_hike
+    self.trails.order("distance").last
+  end
+
+  def tallest_hike
+    self.trails.order("elevation").last
+  end
 end
