@@ -1,2 +1,6 @@
-<%= hike.date %>
-<%= render hike.trail %>
+<div class="hike-div">
+  <h3><%= "#{hike.user.email}'s Hike on #{hike.date.strftime("%A, %B %d, %Y")}" %></h3>
+  <p>Trail: <%= link_to hike.trail.name, hike.trail %></p>
+  <p>Distance hiked: <%= hike.trail.distance %></p>
+  <p>Elevation gained: <%= hike.trail.elevation %></p>
+</div>
