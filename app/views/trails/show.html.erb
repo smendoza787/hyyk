@@ -8,5 +8,8 @@
 <h2><%= @trail.trail_type %></h2>
 <p>Trail Type</p>
 
+<h4>Have you hiked this?</h4>
+<p><%= link_to "Log Hike", new_trail_hike_path(@trail) %></p>
+
 <h3>Users That have also hiked <%= @trail.name %>:</h3>
 <%= render @trail.users %>

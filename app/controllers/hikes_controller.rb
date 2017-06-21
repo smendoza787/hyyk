@@ -3,9 +3,12 @@ class HikesController < ApplicationController
   end
 
   def new
+    @trail = Trail.find(params[:trail_id])
+    @hike = Hike.new
   end
 
   def create
+    raise params.inspect
   end
 
   def show
