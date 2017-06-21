@@ -3,9 +3,11 @@ class TrailsController < ApplicationController
   end
 
   def new
+    @trail = Trail.new
   end
 
   def create
+    @trail = Trail.build(trail_params)
   end
 
   def show
@@ -19,4 +21,10 @@ class TrailsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+    def trail_params
+      params.require(:trail).permit(:name, :location, :distance, :elevation, :type)
+    end
 end

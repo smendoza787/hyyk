@@ -1,0 +1,14 @@
+<%= form_for @trail do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <%= f.label :location %><br>
+  <%= f.text_field :location %><br>
+  <%= f.label "Distance (in miles)" %><br>
+  <%= f.text_field :distance %><br>
+  <%= f.label "Elevation (in feet)" %><br>
+  <%= f.text_field :elevation %><br>
+  <%= f.label :type %><br>
+  <%= f.select :type, options_for_select(["Out and Back", "Loop", "Point to Point"]) %><br><br>
+
+  <%= f.submit %>
+<% end %>

@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20170621071222) do
   end
 
   create_table "trails", force: :cascade do |t|
+    t.string   "name"
     t.string   "location"
     t.integer  "distance"
     t.integer  "elevation"
     t.string   "type"
-    t.boolean  "hiked"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
