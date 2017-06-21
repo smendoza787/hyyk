@@ -1,4 +1,6 @@
 class HikesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -8,7 +10,7 @@ class HikesController < ApplicationController
   end
 
   def create
-    raise params.inspect
+    hike = Hike.create
   end
 
   def show
