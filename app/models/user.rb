@@ -6,4 +6,12 @@ class User < ApplicationRecord
 
   has_many :hikes
   has_many :trails, through: :hikes
+
+  def hyyk(trail)
+    binding.pry
+    self.total_elevation_climbed += trail.elevation
+    self.total_distance_hiked += trail.distance
+    self.total_hikes += 1
+    self.save
+  end
 end

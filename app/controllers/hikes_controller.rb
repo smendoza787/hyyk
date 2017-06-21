@@ -10,10 +10,13 @@ class HikesController < ApplicationController
   end
 
   def create
-    hike = Hike.create
+    hike = Hike.create(hike_params)
+    current_user.hyyk(hike.trail)
+    redirect_to trail_hike_path(params[:trail_id], hike), notice: "Hike successfully created!"
   end
 
   def show
+    @hike = Hike.find(params[:id])
   end
 
   def edit
@@ -24,4 +27,10 @@ class HikesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+    def hike_params
+      params.require(:hike).permit(:date, :trail_id, :user_id)
+    end
 end
