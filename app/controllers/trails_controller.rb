@@ -1,5 +1,6 @@
 class TrailsController < ApplicationController
   def index
+    @trails = Trail.all
   end
 
   def new
@@ -7,10 +8,17 @@ class TrailsController < ApplicationController
   end
 
   def create
-    @trail = Trail.build(trail_params)
+    @trail = Trail.new(trail_params)
+
+    if @trail.save
+      redirect_to @trail, notice: "Trail successfully created!"
+    else
+      render :new
+    end
   end
 
   def show
+    @trail = Trail.find(params[:id])
   end
 
   def edit
@@ -25,6 +33,6 @@ class TrailsController < ApplicationController
   private
 
     def trail_params
-      params.require(:trail).permit(:name, :location, :distance, :elevation, :type)
+      params.require(:trail).permit(:name, :location, :distance, :elevation, :trail_type)
     end
 end

@@ -7,8 +7,8 @@
   <%= f.text_field :distance %><br>
   <%= f.label "Elevation (in feet)" %><br>
   <%= f.text_field :elevation %><br>
-  <%= f.label :type %><br>
-  <%= f.select :type, options_for_select(["Out and Back", "Loop", "Point to Point"]) %><br><br>
+  <%= f.label :trail_type %><br>
+  <%= f.select :trail_type, options_for_select(["Out and Back", "Loop", "Point to Point"]) %><br><br>
 
   <%= f.submit %>
 <% end %>

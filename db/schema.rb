@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170621071222) do
     t.string   "location"
     t.integer  "distance"
     t.integer  "elevation"
-    t.string   "type"
+    t.string   "trail_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

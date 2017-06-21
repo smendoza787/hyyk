@@ -1,0 +1,12 @@
+<h1><%= @trail.name %></h1>
+<h3><%= @trail.location %></h3>
+
+<h2><%= "#{@trail.distance} mi." %></h2>
+<p>Distance</p>
+<h2><%= "#{@trail.elevation} ft" %></h2>
+<p>Elevation</p>
+<h2><%= @trail.trail_type %></h2>
+<p>Trail Type</p>
+
+<h3>Users That have also hiked <%= @trail.name %>:</h3>
+<%= render @trail.users %>

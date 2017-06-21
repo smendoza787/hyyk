@@ -5,7 +5,7 @@ class CreateTrails < ActiveRecord::Migration[5.0]
       t.string :location
       t.integer :distance
       t.integer :elevation
-      t.string :type
+      t.string :trail_type
 
       t.timestamps
     end
