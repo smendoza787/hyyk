@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+u = User.create(email: "poop@aol.com", password: "pooppoop")
+
+t1 = Trail.create(name: "Runyon Canyon Trail", location: "Los Angeles, CA", distance: 2.5, elevation: 765, trail_type: "Loop")
+t2 = Trail.create(name: "Hollywood Sign Trail", location: "Los Angeles, CA", distance: 8.5, elevation: 2125, trail_type: "Loop")
+
+u.trails << t1

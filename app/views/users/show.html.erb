@@ -1,2 +1,8 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.email %>'s Hyyking Page</h1>
+<h2>Stats</h2>
+<p>Total Hikes: <%= @user.total_hikes %></p>
+<p>Total Elevation Climbed: <%= @user.total_elevation_climbed %></p>
+<p>Total Distance Hiked: <%= @user.total_distance_hiked %></p>
+
+<h2>Hyyks</h2>
+<%= render @user.hikes %>

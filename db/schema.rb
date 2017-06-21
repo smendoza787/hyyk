@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20170621071222) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "total_elevation_climbed"
-    t.integer  "total_distance_hiked"
-    t.integer  "total_hikes"
+    t.integer  "total_elevation_climbed", default: 0,  null: false
+    t.integer  "total_distance_hiked",    default: 0,  null: false
+    t.integer  "total_hikes",             default: 0,  null: false
     t.string   "email",                   default: "", null: false
     t.string   "encrypted_password",      default: "", null: false
     t.string   "reset_password_token"
