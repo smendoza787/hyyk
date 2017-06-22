@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def tallest_hike
     self.trails.order("elevation").last
   end
+
+  def self.most_active
+    all.sort_by{|user| user.total_hikes}.reverse.first
+  end
 end
