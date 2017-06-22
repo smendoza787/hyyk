@@ -5,10 +5,14 @@
 <p>Total Distance Hiked: <%= @user.total_distance_hiked %> mi.</p>
 
 <div class="hyyk-records">
-  <p><%= @user.longest_hike.distance %> miles</p>
-  <p><strong>Longest Hyyk</strong></p>
-  <p><%= @user.tallest_hike.elevation %> feet</p>
-  <p><strong>Tallest Hyyk</strong></p>
+  <% if @user.hikes.any? %>
+    <p><%= @user.longest_hike.distance %> miles</p>
+    <p><strong>Longest Hyyk</strong></p>
+    <p><%= @user.tallest_hike.elevation %> feet</p>
+    <p><strong>Tallest Hyyk</strong></p>
+  <% else %>
+    <p>Start hiking to set some records!</p>
+  <% end %>
 </div>
 
 <h2>Hyyks</h2>

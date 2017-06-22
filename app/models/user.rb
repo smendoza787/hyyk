@@ -7,11 +7,24 @@ class User < ApplicationRecord
   has_many :hikes
   has_many :trails, through: :hikes
 
-  def hyyk(trail)
-    self.total_elevation_climbed += trail.elevation
-    self.total_distance_hiked += trail.distance
-    self.total_hikes += 1
-    self.save
+  def total_hikes
+    self.hikes.size
+  end
+
+  def total_distance_hiked
+    total_distance = 0
+    self.hikes.each do |hike|
+      total_distance += hike.trail.distance
+    end
+    total_distance
+  end
+
+  def total_elevation_climbed
+    total_elevation = 0
+    self.hikes.each do |hike|
+      total_elevation += hike.trail.elevation
+    end
+    total_elevation
   end
 
   def longest_hike

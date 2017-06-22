@@ -10,5 +10,13 @@
   <%= f.label :trail_type %><br>
   <%= f.select :trail_type, options_for_select(["Out and Back", "Loop", "Point to Point"]) %><br><br>
 
+  <p>Did you hike this trail?</p>
+  <%= f.fields_for :hikes, @trail.hikes.build do |ff| %>
+    <%= ff.label :date %><br>
+    <%= ff.date_field :date %><br><br>
+    <%= ff.hidden_field :trail_id, :value => @trail.id %>
+    <%= ff.hidden_field :user_id, :value => current_user.id %>
+  <% end %>
+
   <%= f.submit %>
 <% end %>

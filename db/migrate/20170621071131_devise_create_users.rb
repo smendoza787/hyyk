@@ -1,10 +1,6 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :users do |t|
-      t.integer :total_elevation_climbed, null: false, default: "0"
-      t.float :total_distance_hiked, null: false, default: "0"
-      t.integer :total_hikes, null: false, default: "0"
-
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
