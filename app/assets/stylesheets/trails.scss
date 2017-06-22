@@ -3,6 +3,35 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .trail-div {
-  border: solid 1px black;
+  margin: 0 auto;
+  background-color: #AEBD77;
+  box-shadow: 0 2px 3px black;
+  border-radius: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 20px;
+  max-width: 600px;
+}
+
+.trail-show-info {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.trail-info-box {
+  margin-left: 25px;
+}
+
+.hyyk-img {
+  border-radius: 50%;
+  width: 175px;
+  height: 175px;
+  box-shadow: 0 2px 3px black;
 }

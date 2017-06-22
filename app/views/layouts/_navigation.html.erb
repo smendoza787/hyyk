@@ -8,20 +8,20 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/"><i class="fa fa-tripadvisor" aria-hidden="true"></i> Hyyk</a>
+        <a class="navbar-brand" href="/"><i class="fa fa-tree" aria-hidden="true"></i> Hyyker</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navigationbar">
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li>Signed in as <%= current_user.email %></li>
-            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <li class="navbar-text">Signed in as <%= current_user.email %></li>
             <li><%= link_to "Profile", current_user %></li>
             <li><%= link_to "Community", users_path %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Log In", new_user_session_path %></li>
             <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li><%= link_to "Log In", new_user_session_path %></li>
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
