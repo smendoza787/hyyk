@@ -1,12 +1,29 @@
-<ul>
-  <li><%= link_to "Home", root_path %></li>
-  <% if user_signed_in? %>
-    <li>Signed in as <%= current_user.email %></li>
-    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-    <li><%= link_to "Profile", current_user %></li>
-    <li><%= link_to "Community", users_path %></li>
-  <% else %>
-    <li><%= link_to "Log In", new_user_session_path %></li>
-    <li><%= link_to "Sign Up", new_user_registration_path %></li>
-  <% end %>
-</ul>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigationbar" aria-expanded="true">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><i class="fa fa-tripadvisor" aria-hidden="true"></i> Hyyk</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navigationbar">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>Signed in as <%= current_user.email %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "Profile", current_user %></li>
+            <li><%= link_to "Community", users_path %></li>
+          <% else %>
+            <li><%= link_to "Log In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>

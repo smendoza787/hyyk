@@ -15,6 +15,8 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 group :development, :test do
