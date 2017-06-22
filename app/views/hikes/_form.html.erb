@@ -1,4 +1,11 @@
 <%= form_for @hike, url: trail_hikes_path(@trail.id) do |f| %>
+  <% if @hike.errors.any? %>
+  <ul>
+  <% @hike.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+  <% end %>
   <%= f.label :date %><br>
   <%= f.date_field :date %><br><br>
   <%= f.hidden_field :trail_id, :value => @trail.id %>

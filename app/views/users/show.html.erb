@@ -6,10 +6,10 @@
 
 <div class="hyyk-records">
   <% if @user.hikes.any? %>
+  <p><strong>Longest Hyyk</strong></p>
     <p><%= @user.longest_hike.distance %> miles</p>
-    <p><strong>Longest Hyyk</strong></p>
-    <p><%= @user.tallest_hike.elevation %> feet</p>
     <p><strong>Tallest Hyyk</strong></p>
+    <p><%= @user.tallest_hike.elevation %> feet</p>
   <% else %>
     <p>Start hiking to set some records!</p>
   <% end %>

@@ -10,9 +10,11 @@ class HikesController < ApplicationController
   end
 
   def create
-    hike = Hike.new(hike_params)
-    if hike.save
-      redirect_to trail_hike_path(params[:trail_id], hike), notice: "Hike successfully created!"
+    @hike = Hike.new(hike_params)
+    @trail = Trail.find(params[:trail_id])
+    if @hike.valid?
+      @hike.save
+      redirect_to trail_hike_path(@trail, @hike), notice: "Hike successfully created!"
     else
       render :new
     end
