@@ -1,8 +1,21 @@
-<h1><%= @user.email %>'s Hyyking Page</h1>
-<h2>Stats</h2>
-<p>Total Hikes: <%= @user.total_hikes %></p>
-<p>Total Elevation Climbed: <%= @user.total_elevation_climbed %> ft.</p>
-<p>Total Distance Hiked: <%= @user.total_distance_hiked %> mi.</p>
+<div class="row text-center hike-title">
+  <h1><%= @user.email %>'s Hyyking Page</h1>
+</div>
+
+<div class="row text-center hike-info">
+  <div class="col-md-4 hike-info-section">
+    <h2><%= @user.total_hikes %></h2>
+    <p>Total Hikes</p>
+  </div>
+  <div class="col-md-4 hike-info-section">
+    <h2><%= @user.total_elevation_climbed %> ft.</h2>
+    <p>Total Elevation Climbed</p>
+  </div>
+  <div class="col-md-4 hike-info-section">
+    <h2><%= @user.total_distance_hiked %> mi.</h2>
+    <p>Total Distance Hiked</p>
+  </div>
+</div>
 
 <div class="hyyk-records">
   <% if @user.hikes.any? %>
