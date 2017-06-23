@@ -16,7 +16,7 @@
 
 body {
   background-color: #538F6A;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 /* navbar */
@@ -75,7 +75,7 @@ body {
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #141829;
+    background-color: #1B4B36;
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #CCC;

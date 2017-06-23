@@ -1,3 +1,20 @@
-<p><%= link_to user.email, user %></p>
-<p><%= user.total_hikes %> total hikes.</p>
-<p><%= user.total_distance_hiked %> miles hiked.</p>
+<div class="hyyker text-center">
+  <div class="hyyker-img">
+    <%= image_tag "http://placekitten.com/g/75/75", size: "75x75", class: "img-circle" %>
+  </div>
+  <div class="hyyker-email">
+    <h3><%= link_to user.email, user %></h3>
+  </div>
+  <div class="hyyker-stats">
+    <h3><%= user.total_distance_hiked %></h3>
+    <p>Miles Hiked</p>
+  </div>
+  <div class="hyyker-stats">
+    <h3><%= user.total_hikes %></h3>
+    <p>Total Hikes</p>
+  </div>
+  <div class="hyyker-stats">
+    <h3><%= user.total_elevation_climbed %></h3>
+    <p>Total Elevation Climbed</p>
+  </div>
+</div>
