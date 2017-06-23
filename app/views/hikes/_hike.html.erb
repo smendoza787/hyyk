@@ -1,6 +1,17 @@
-<div class="hike-div">
-  <h3><%= "#{hike.user.email}'s Hike on #{hike.date.strftime("%A, %B %d, %Y")}" %></h3>
-  <p>Trail: <%= link_to hike.trail.name, hike.trail %></p>
-  <p>Distance hiked: <%= hike.trail.distance %></p>
-  <p>Elevation gained: <%= hike.trail.elevation %></p>
+<div class="row hike-div text-center">
+  <div class="col-md-3 hike-info-section">
+    <h3><%= hike.date.strftime("%A, %B %d, %Y") %></h3>
+  </div>
+  <div class="col-md-3 hike-info-section">
+    <h3><%= link_to hike.trail.name, hike.trail %></h3>
+    <p>Trail</p>
+  </div>
+  <div class="col-md-3 hike-info-section">
+    <h3><%= hike.trail.distance %> mi</h3>
+    <p>Distance Hiked</p>
+  </div>
+  <div class="col-md-3 hike-info-section">
+    <h3><%= hike.trail.elevation %> ft</h3>
+    <p>Elevation Gained</p>
+  </div>
 </div>

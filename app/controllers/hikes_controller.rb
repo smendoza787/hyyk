@@ -14,7 +14,7 @@ class HikesController < ApplicationController
     @trail = Trail.find(params[:trail_id])
     if @hike.valid?
       @hike.save
-      redirect_to trail_hike_path(@trail, @hike), notice: "Hike successfully created!"
+      redirect_to @hike.user, notice: "Hike successfully created!"
     else
       render :new
     end
