@@ -6,24 +6,36 @@
   <% end %>
   </ul>
   <% end %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br>
-  <%= f.label :location %><br>
-  <%= f.text_field :location %><br>
-  <%= f.label "Distance (in miles)" %><br>
-  <%= f.text_field :distance %><br>
-  <%= f.label "Elevation (in feet)" %><br>
-  <%= f.text_field :elevation %><br>
-  <%= f.label :trail_type %><br>
-  <%= f.select :trail_type, options_for_select(["Out and Back", "Loop", "Point to Point"]) %><br><br>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %><br>
+  </div>
+  <div class="form-group">
+    <%= f.label :location %><br>
+    <%= f.text_field :location, class: "form-control" %><br>
+  </div>
+  <div class="form-group">
+    <%= f.label "Distance (in miles)" %><br>
+    <%= f.text_field :distance, class: "form-control" %><br>
+  </div>
+  <div class="form-group">
+    <%= f.label "Elevation (in feet)" %><br>
+    <%= f.text_field :elevation, class: "form-control" %><br>
+  </div>
+  <div class="form-group">
+    <%= f.label :trail_type %><br>
+    <%= f.select :trail_type, options_for_select(["Out and Back", "Loop", "Point to Point"]) %><br><br>
+  </div>
 
   <p>Did you hike this trail?</p>
   <%= f.fields_for :hikes, @trail.hikes.build do |ff| %>
+    <div class="form-group">
     <%= ff.label :date %><br>
-    <%= ff.date_field :date %><br><br>
+    <%= ff.date_field :date, class: "form-control" %><br><br>
+    </div>
     <%= ff.hidden_field :trail_id, :value => @trail.id %>
     <%= ff.hidden_field :user_id, :value => current_user.id %>
   <% end %>
 
-  <%= f.submit %>
+  <%= f.submit class: "form-control" %>
 <% end %>

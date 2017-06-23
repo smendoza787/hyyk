@@ -1,5 +1,6 @@
-<h1>Hyykers</h1>
-
-<p><%= link_to "Current Most Active User", users_most_active_path %></p>
+<div class="hike-header text-center">
+  <h1>Hyykers</h1>
+  <%= link_to "Current Most Active User", users_most_active_path, class: "btn btn-primary" %>
+</div>
 
 <%= render @users %>
