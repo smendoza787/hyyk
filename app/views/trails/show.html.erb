@@ -28,7 +28,7 @@
     <p>Trail Type</p>
   </div>
   <div class="col-md-3 hike-info-section">
-    <h4>Have you hiked this?</h4>
+    <h4>Have you hiked <%= @trail.name %>?</h4>
     <p><%= link_to "Log Hike", new_trail_hike_path(@trail), class: "btn btn-info" %></p>
   </div>
 </div>

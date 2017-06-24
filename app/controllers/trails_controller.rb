@@ -1,6 +1,6 @@
 class TrailsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_trail_creator, only: [:edit, :destroy]
+  before_action :authenticate_trail_creator, only: [:edit]
   before_action :set_trail!, only: [:show, :edit, :update, :destroy]
 
   def index

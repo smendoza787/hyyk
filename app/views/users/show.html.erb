@@ -37,4 +37,10 @@
 </div>
 
 <h2 class="text-center">Hyyks</h2>
-<%= render @user.hikes %>
+<% if @user.hikes.any? %>
+  <%= render @user.hikes %>
+<% else %>
+  <div class="hike-div text-center">
+    <h2><%= @user.email %> hasn't gone on any hikes yet!</h2>
+  </div>
+<% end %>
