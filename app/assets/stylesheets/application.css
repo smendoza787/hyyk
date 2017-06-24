@@ -27,6 +27,10 @@ body {
   margin-top: 50px;
 }
 
+a.btn.btn-success.form-control {
+  margin-bottom: 10px;
+}
+
 .hyyk-footer {
   background-color: #1B4B36;
   margin-top: 25px;
