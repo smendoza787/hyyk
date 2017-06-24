@@ -1,5 +1,7 @@
 class TrailsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_trail_creator, only: [:edit, :destroy]
+  before_action :set_trail!, only: [:show, :edit, :update, :destroy]
 
   def index
     @trails = Trail.all
@@ -20,21 +22,40 @@ class TrailsController < ApplicationController
   end
 
   def show
-    @trail = Trail.find(params[:id])
   end
 
   def edit
   end
 
   def update
+    @trail.update(trail_params)
+
+    if @trail.save
+      redirect_to @trail, notice: "#{@trail.name} successfully updated!"
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @trail.destroy
+
+    redirect_to trails_path, notice: "Trail successfully deleted."
   end
 
   private
 
     def trail_params
-      params.require(:trail).permit(:name, :location, :distance, :elevation, :trail_type, hikes_attributes: [:date, :trail_id, :user_id])
+      params.require(:trail).permit(:name, :location, :distance, :elevation, :trail_type, :created_by_user_id, hikes_attributes: [:date, :trail_id, :user_id])
+    end
+
+    def set_trail!
+      @trail = Trail.find(params[:id])
+    end
+
+    def authenticate_trail_creator
+      if @trail.created_by_user_id != current_user.id
+        redirect_to @trail, notice: "You can't perform that action on this trail."
+      end
     end
 end
