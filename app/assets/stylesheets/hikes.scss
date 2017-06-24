@@ -6,8 +6,8 @@
   background-color: #1B4B36;
   color: white;
   padding: 15px;
-  margin: 15px;
-  border-radius: 10px;
+  margin: 15px 0;
+  border-radius: 10px 10px 0 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -18,6 +18,16 @@
   }
 }
 
+@media (max-width: 990px) {
+  .hike-div {
+    display: block;
+  }
+}
+
 .hike-header {
   padding: 40px;
+}
+
+.hyyk-delete {
+  margin-top: -16px;
 }

@@ -25,12 +25,23 @@ class HikesController < ApplicationController
   end
 
   def edit
+    # no need to edit
   end
 
   def update
+    # no need to update
   end
 
   def destroy
+    @hike = Hike.find(params[:id])
+
+    if @hike.user == current_user
+      @hike.destroy
+
+      redirect_to @hike.user, notice: "Hike successfully deleted."
+    else
+      redirect_to @hike.user, notice: "You are not allowed to delete someone elses hike."
+    end
   end
 
   private
