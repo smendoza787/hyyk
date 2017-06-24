@@ -3,18 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .trail-div {
-  margin: 0 auto;
-  background-color: #AEBD77;
+  background-color: #49D292;
   box-shadow: 0 2px 3px black;
   border-radius: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 20px;
+  width: 49%;
+  margin: 20px auto;
   padding: 20px;
-  max-width: 600px;
+  display: inline-block;
+}
+
+.trail-stuff {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .trail-show-info {

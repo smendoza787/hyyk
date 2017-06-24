@@ -1,15 +1,17 @@
-<div class="trail-div">
-  <div class="trail-info">
-    <%= image_tag("hyyk-img.jpg", class: "hyyk-img", alt: "hyyk") %>
-    <h2><%= link_to trail.name, trail %></h2>
-    <p><%= trail.location %></p>
-  </div>
-  <div class="trail-attributes">
-    <h3><%= "#{trail.distance} mi." %></h3>
-    <p>Distance</p>
-    <h3><%= "#{trail.elevation} ft" %></h3>
-    <p>Elevation</p>
-    <h3><%= trail.trail_type %></h3>
-    <p>Trail Type</p>
+<div class="trail-div text-center">
+  <div class="trail-stuff">
+    <div class="trail-info">
+      <%= image_tag("hyyk-img.jpg", class: "hyyk-img", alt: "hyyk") %>
+      <h2><%= link_to trail.name, trail %></h2>
+      <p><%= trail.location %></p>
+    </div>
+    <div class="trail-attributes">
+      <h3><%= "#{trail.distance} mi." %></h3>
+      <p>Distance</p>
+      <h3><%= "#{trail.elevation} ft" %></h3>
+      <p>Elevation</p>
+      <h3><%= trail.trail_type %></h3>
+      <p>Trail Type</p>
+    </div>
   </div>
 </div>
