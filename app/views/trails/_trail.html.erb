@@ -3,7 +3,7 @@
     <div class="trail-info">
       <%= image_tag("hyyk-img.jpg", class: "hyyk-img", alt: "hyyk") %>
       <h2><%= link_to trail.name, trail %></h2>
-      <p><%= trail.location %></p>
+      <p><i class="fa fa-location-arrow" aria-hidden="true"></i> <%= trail.location %></p>
     </div>
     <div class="trail-attributes">
       <h3><%= "#{trail.distance} mi." %></h3>

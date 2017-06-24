@@ -3,7 +3,9 @@
 </div>
 
 <div class="row text-center">
-  <%= link_to "Create a New Trail", new_trail_path, class: "btn btn-primary" %>
+  <%= link_to new_trail_path, class: "btn btn-success" do %>
+    <i class="fa fa-plus" aria-hidden="true"></i> Create a New Trail
+  <% end %>
 </div>
 
 <%= render @trails %>
