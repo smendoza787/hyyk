@@ -10,6 +10,7 @@
   margin: 20px;
   padding: 20px;
   display: inline-block;
+  box-shadow: 0 2px 3px black;
 }
 
 @media (max-width: 900px) {
@@ -52,6 +53,7 @@
   color: white;
   border-radius: 0 0 10px 10px;
   margin-bottom: 15px;
+  box-shadow: 0 2px 3px black;
 }
 
 .hike-info {
@@ -59,6 +61,7 @@
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 15px;
+  box-shadow: 0 2px 3px black;
 }
 
 .hike-info-section {
@@ -96,6 +99,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  box-shadow: 0 2px 3px black;
 }
 
 .hyyker-stats {
@@ -107,6 +111,7 @@
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 15px;
+  box-shadow: 0 2px 3px black;
 }
 
 @media (max-width: 700px) {

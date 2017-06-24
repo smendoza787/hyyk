@@ -46,4 +46,12 @@ class User < ApplicationRecord
   def self.most_active
     all.sort_by{|user| user.total_hikes}.reverse.first
   end
+
+  def self.rock_climber
+    all.sort_by{|user| user.total_elevation_climbed}.reverse.first
+  end
+
+  def self.trail_runner
+    all.sort_by{|user| user.total_distance_hiked}.reverse.first
+  end
 end

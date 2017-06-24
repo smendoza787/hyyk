@@ -12,6 +12,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  box-shadow: 0 2px 3px black;
 
   h3 {
     margin: 0;
@@ -22,10 +23,6 @@
   .hike-div {
     display: block;
   }
-}
-
-.hike-header {
-  padding: 40px;
 }
 
 .hyyk-delete {

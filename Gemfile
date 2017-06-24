@@ -18,6 +18,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+group :production do
+  gem 'pg'
+end
+
 
 group :development, :test do
   gem "rspec-rails"
