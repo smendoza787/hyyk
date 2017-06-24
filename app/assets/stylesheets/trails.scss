@@ -12,6 +12,12 @@
   display: inline-block;
 }
 
+@media (max-width: 900px) {
+  .trail-div {
+    width: 100%;
+  }
+}
+
 .trail-stuff {
   display: flex;
   justify-content: space-around;
