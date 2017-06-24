@@ -40,6 +40,10 @@
 
 <div class="row hyyker-list">
   <div class="col-md-10 col-md-offset-1">
-    <%= render @trail.users.uniq %>
+    <% if @trail.users.any? %>
+      <%= render @trail.users.uniq %>
+    <% else %>
+      <h2 class="text-center">Looks like no Hyykers have hiked this trail yet!</h2>
+    <% end %>
   </div>
 </div>

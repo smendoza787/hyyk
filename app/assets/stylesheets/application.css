@@ -19,6 +19,18 @@ body {
   margin-top: 50px;
 }
 
+.hyyk-footer {
+  background-color: #1B4B36;
+  margin-top: 25px;
+  padding: 25px;
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-around;
+}
+
 /* navbar */
 .navbar-default {
     background-color: #1B4B36;
