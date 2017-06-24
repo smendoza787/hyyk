@@ -3,5 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .footer-fix {
-  min-height: 90vh;
+  min-height: 85vh;
+}
+
+.hyyk-index {
+  display: flex;
+  align-items: center;
+}
+
+.index-hyyker-text {
+  font-size: 6em;
+  font-family: 'Righteous', cursive;
+  color: white;
 }

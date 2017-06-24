@@ -14,6 +14,10 @@
  *= require_self
  */
 
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
 body {
   background-color: #538F6A;
   margin-top: 50px;
