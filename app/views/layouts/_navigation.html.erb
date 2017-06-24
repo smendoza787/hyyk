@@ -16,13 +16,37 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li class="navbar-text">Signed in as <%= current_user.email %></li>
-            <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "All Trails", trails_path %></li>
-            <li><%= link_to "Community", users_path %></li>
-            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <li>
+              <%= link_to current_user do %>
+                <i class="fa fa-user-o" aria-hidden="true"></i> Profile
+              <% end %>
+            </li>
+            <li>
+              <%= link_to trails_path do %>
+                <i class="fa fa-globe" aria-hidden="true"></i> All Trails
+              <% end %>
+            </li>
+            <li>
+              <%= link_to users_path do %>
+                <i class="fa fa-users" aria-hidden="true"></i> Community
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out
+              <% end %>
+            </li>
           <% else %>
-            <li><%= link_to "Sign Up", new_user_registration_path %></li>
-            <li><%= link_to "Log In", new_user_session_path %></li>
+            <li>
+              <%= link_to new_user_registration_path do %>
+                <i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path do %>
+                <i class="fa fa-sign-in" aria-hidden="true"></i> Log In
+              <% end %>
+            </li>
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
