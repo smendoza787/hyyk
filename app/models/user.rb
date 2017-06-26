@@ -21,26 +21,30 @@ class User < ApplicationRecord
 
   def total_distance_hiked
     total_distance = 0
-    self.hikes.each do |hike|
-      total_distance += hike.trail.distance
+    if self.hikes.size > 0
+      self.hikes.each do |hike|
+        total_distance += hike.trail.distance
+      end
     end
     total_distance
   end
 
   def total_elevation_climbed
     total_elevation = 0
-    self.hikes.each do |hike|
-      total_elevation += hike.trail.elevation
+    if self.hikes.size > 0
+      self.hikes.each do |hike|
+        total_elevation += hike.trail.elevation
+      end
     end
     total_elevation
   end
 
   def longest_hike
-    self.trails.order("distance").last
+    self.trails.order("distance").last || 0
   end
 
   def tallest_hike
-    self.trails.order("elevation").last
+    self.trails.order("elevation").last || 0
   end
 
   def self.most_active
