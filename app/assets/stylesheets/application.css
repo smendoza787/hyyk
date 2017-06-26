@@ -138,3 +138,12 @@ a.btn.btn-success.form-control {
 body > div.container > div > div > a.btn.btn-primary {
   margin-right: 25px;
 }
+
+/* index page subtitle */
+
+body > div.container > div > div > h3 {
+  font-size: 3em;
+  color: #49D292;
+  text-shadow: 0 2px 2px black;
+  margin-bottom: 20px;
+}
