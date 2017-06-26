@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   def total_distance_hiked
     total_distance = 0
-    if self.hikes.size > 0
+    if self.hikes.any?
       self.hikes.each do |hike|
         total_distance += hike.trail.distance
       end
@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   def total_elevation_climbed
     total_elevation = 0
-    if self.hikes.size > 0
+    if self.hikes.any?
       self.hikes.each do |hike|
         total_elevation += hike.trail.elevation
       end
