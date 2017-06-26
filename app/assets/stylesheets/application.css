@@ -141,9 +141,9 @@ body > div.container > div > div > a.btn.btn-primary {
 
 /* index page subtitle */
 
-body > div.container > div > div > h3 {
-  font-size: 3em;
-  color: #49D292;
-  text-shadow: 0 2px 2px black;
+h3 {
+  font-size: 2.5em;
+  color: white;
+  text-shadow: 0 1px 2px black;
   margin-bottom: 20px;
 }
