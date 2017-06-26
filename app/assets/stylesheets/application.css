@@ -29,6 +29,10 @@ body {
   margin-top: 50px;
 }
 
+a {
+  color: white;
+}
+
 a.btn.btn-success.form-control {
   margin-bottom: 10px;
 }
