@@ -132,3 +132,9 @@ a.btn.btn-success.form-control {
           color: #333;
     }
 }
+
+/* index button margin right */
+
+body > div.container > div > div > a.btn.btn-primary {
+  margin-right: 25px;
+}
