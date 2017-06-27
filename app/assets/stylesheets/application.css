@@ -25,7 +25,7 @@ h1 {
 }
 
 body {
-  background-color: #538F6A;
+  background-color: #2bc06f;
   margin-top: 50px;
 }
 
@@ -38,7 +38,7 @@ a.btn.btn-success.form-control {
 }
 
 .hyyk-footer {
-  background-color: #1B4B36;
+  background-color: #03864d;
   margin-top: 25px;
   padding: 25px;
   text-align: center;
@@ -59,7 +59,7 @@ a.btn.btn-success.form-control {
 
 /* navbar */
 .navbar-default {
-    background-color: #1B4B36;
+    background-color: #03864d;
     border: none;
     box-shadow: 0 2px 3px black;
 }
@@ -88,7 +88,7 @@ a.btn.btn-success.form-control {
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
     color: #555;
-    background-color: #1B4B36;
+    background-color: #03864d;
 }
 /* Caret */
 .navbar-default .navbar-nav > .dropdown > a .caret {

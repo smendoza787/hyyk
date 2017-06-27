@@ -1,46 +1,48 @@
-<div class="row text-center hike-title">
-  <h1><%= @user.email %>'s Hyyking Page</h1>
-</div>
-
-<h2 class="text-center">Stats</h2>
-
-<div class="row text-center hike-info">
-  <div class="col-md-4 hike-info-section">
-    <h2><%= @user.total_hikes %></h2>
-    <p>Total Hikes</p>
+<div class="footer-fix">
+  <div class="row text-center hike-title">
+    <h1><%= @user.email %>'s Hyyking Page</h1>
   </div>
-  <div class="col-md-4 hike-info-section">
-    <h2><%= @user.total_elevation_climbed %> ft.</h2>
-    <p>Total Elevation Climbed</p>
-  </div>
-  <div class="col-md-4 hike-info-section">
-    <h2><%= @user.total_distance_hiked %> mi.</h2>
-    <p>Total Distance Hiked</p>
-  </div>
-</div>
 
-<h2 class="text-center"><i class="fa fa-trophy" aria-hidden="true"></i> Personal Records <i class="fa fa-trophy" aria-hidden="true"></i></h2>
+  <h2 class="text-center">Stats</h2>
 
-<div class="row hyyk-records text-center">
+  <div class="row text-center hike-info">
+    <div class="col-md-4 hike-info-section">
+      <h2><%= @user.total_hikes %></h2>
+      <p>Total Hikes</p>
+    </div>
+    <div class="col-md-4 hike-info-section">
+      <h2><%= @user.total_elevation_climbed %> ft.</h2>
+      <p>Total Elevation Climbed</p>
+    </div>
+    <div class="col-md-4 hike-info-section">
+      <h2><%= @user.total_distance_hiked %> mi.</h2>
+      <p>Total Distance Hiked</p>
+    </div>
+  </div>
+
+  <h2 class="text-center"><i class="fa fa-trophy" aria-hidden="true"></i> Personal Records <i class="fa fa-trophy" aria-hidden="true"></i></h2>
+
+  <div class="row hyyk-records text-center">
+    <% if @user.hikes.any? %>
+      <div class="col-md-6 hike-info-section">
+        <h2><%= @user.longest_hike.distance %> mi</h2>
+        <p>Longest Hyyk</p>
+      </div>
+      <div class="col-md-6 hike-info-section">
+        <h2><%= @user.tallest_hike.elevation %> feet</h2>
+        <p>Tallest Hyyk</p>
+      </div>
+    <% else %>
+      <h2>Start hiking to set some records!</h2>
+    <% end %>
+  </div>
+
+  <h2 class="text-center">Hyyks</h2>
   <% if @user.hikes.any? %>
-    <div class="col-md-6 hike-info-section">
-      <h2><%= @user.longest_hike.distance %> mi</h2>
-      <p>Longest Hyyk</p>
-    </div>
-    <div class="col-md-6 hike-info-section">
-      <h2><%= @user.tallest_hike.elevation %> feet</h2>
-      <p>Tallest Hyyk</p>
-    </div>
+    <%= render @user.hikes %>
   <% else %>
-    <h2>Start hiking to set some records!</h2>
+    <div class="hike-div text-center">
+      <h2><%= @user.email %> hasn't gone on any hikes yet!</h2>
+    </div>
   <% end %>
 </div>
-
-<h2 class="text-center">Hyyks</h2>
-<% if @user.hikes.any? %>
-  <%= render @user.hikes %>
-<% else %>
-  <div class="hike-div text-center">
-    <h2><%= @user.email %> hasn't gone on any hikes yet!</h2>
-  </div>
-<% end %>

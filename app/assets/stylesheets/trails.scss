@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .trail-div {
-  background-color: #49D292;
+  background-color: #1fdd81;
   box-shadow: 0 2px 3px black;
   border-radius: 10px;
   width: 45%;
@@ -11,6 +11,25 @@
   padding: 20px;
   display: inline-block;
   box-shadow: 0 2px 3px black;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #0bc5d8;
+  border-color: none;
+}
+
+body > div.container > div > div > div.trail-info > h2 > a {
+  background-color: rgba(255,255,255, .5);
+  color: #737373;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: .75em;
+  box-shadow: 0 2px 1px #737373;
+}
+
+.navbar-default .navbar-text {
+    color: #ccc;
 }
 
 @media (max-width: 900px) {
