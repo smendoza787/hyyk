@@ -1,25 +1,17 @@
-# README
+# Hyyker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+Hyyker is a hike-logging app built in Rails. Create an account, track all of your hikes!
 
-* Ruby version
+## Instructions
 
-* System dependencies
+* Make sure to `cd` into the repository:
 
-* Configuration
+```
+  cd hyyker
+```
 
-* Database creation
+* Run `rails s` to start up your server
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# hyyk
+* Then head on over to your browser and navigate to `http://localhost:3000`
