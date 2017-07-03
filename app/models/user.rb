@@ -23,7 +23,9 @@ class User < ApplicationRecord
     total_distance = 0
     if self.hikes.any?
       self.hikes.each do |hike|
-        total_distance += hike.trail.distance
+        if hike.trail
+          total_distance += hike.trail.distance
+        end
       end
     end
     total_distance
@@ -33,7 +35,9 @@ class User < ApplicationRecord
     total_elevation = 0
     if self.hikes.any?
       self.hikes.each do |hike|
-        total_elevation += hike.trail.elevation
+        if hike.trail
+          total_elevation += hike.trail.elevation
+        end
       end
     end
     total_elevation

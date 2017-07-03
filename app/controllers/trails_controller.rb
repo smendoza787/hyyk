@@ -38,6 +38,10 @@ class TrailsController < ApplicationController
   end
 
   def destroy
+    @trail.hikes.each do |hike|
+      hike.destroy
+    end
+
     @trail.destroy
 
     redirect_to trails_path, notice: "Trail successfully deleted."
