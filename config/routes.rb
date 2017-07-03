@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root 'static#index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => {
+    :omniauth_callbacks => "users/omniauth_callbacks",
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions'
+  # }
   # To display user profile pages ONLY, devise handles the rest
   get '/users/most_active' => 'users#most_active'
   get '/users/rock_climber' => 'users#rock_climber'
@@ -11,6 +18,7 @@ Rails.application.routes.draw do
     # You would always need a trail to create a hike, anyway
     resources :hikes
   end
+
 
 
 end
