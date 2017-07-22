@@ -16,10 +16,10 @@
 
 <div class="row text-center trail-ajax-nav">
   <div class="col-md-6">
-    <button id="prev-trail-btn" class="btn btn-info form-control"><i class="fa fa-arrow-left" aria-hidden="true"></i> Load Previous Trail</button>
+    <button id="prev-trail-btn" class="btn btn-info form-control" data-id="<%= @trail.id %>"><i class="fa fa-arrow-left" aria-hidden="true"></i> Load Previous Trail</button>
   </div>
   <div class="col-md-6">
-    <button id="next-trail-btn" class="btn btn-info form-control">Load Next Trail <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    <button id="next-trail-btn" class="btn btn-info form-control" data-id="<%= @trail.id %>">Load Next Trail <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
   </div>
 </div>
 
@@ -56,3 +56,46 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  var lastTrailId = 0;
+
+  $(function() {
+    attachNextButton();
+    attachPrevButton();
+
+    // Get lastTrail ID so you wont load past the next trail
+    $.get('/trails.json')
+    .done(function(trails) {
+      lastTrailId = trails.length;
+    });
+  });
+
+  function attachNextButton() {
+    $('#next-trail-btn').click(function(){
+      if ($(this).data("id") < lastTrailId) {
+        var id = $(this).data("id") + 1;
+        getTrail(id);
+      }
+    });
+  }
+
+  function attachPrevButton() {
+    $('#prev-trail-btn').click(function(){
+      if ($(this).data("id") > 1) {
+        var id = $(this).data("id") - 1;
+        getTrail(id);
+      }
+    });
+  }
+
+  function getTrail(id) {
+    $.get(`/trails/${id}.json`)
+    .done(function(trail) {
+      console.log(trail);
+    })
+    .error(function(error) {
+      console.log(error);
+    });
+  }
+</script>
