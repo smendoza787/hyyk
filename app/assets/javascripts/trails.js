@@ -6,3 +6,7 @@ function Trail(id, name, location, distance, elevation, users) {
   this.elevation = elevation;
   this.users = users;
 }
+
+Trail.prototype.urlPath = function() {
+  return `/users/${this.id}`;
+}

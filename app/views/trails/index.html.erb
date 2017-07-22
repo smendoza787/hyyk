@@ -30,10 +30,14 @@
             var html = '<h3 class="text-center">Hyykers</h3>';
             trail.users.forEach(function(user) {
               var displayName = user['name'] || user['email'];
+              // if the user signs up with facebook only their email will show
+              // FUTURE REFACTOR: redirect User to user/:id/edit page after
+              //                  Omniauth login to complete name field
               if (!html.includes(displayName)) {
                 html += `
                   <div class="trail-user-box">
-                    <h4><a href="/users/${user['id']}" class="btn btn-success trail-user">${displayName}</a></h4>
+                    <h4>${displayName}</h4>
+                    <a href="${trail.urlPath()}" class="btn btn-success trail-user">View Profile</a>
                   </div>
                 `;
               }
