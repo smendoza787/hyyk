@@ -20,34 +20,33 @@
       var id = $(this).data("id");
       $.get(`/trails/${id}.json`)
       .done(function(trailJSON) {
-        
         // creating new Trail JS Object
         var trail = $.extend(new Trail(), trailJSON);
 
-        if (trail.users.length) {
-          var html = '<h3 class="text-center">Hyykers</h3>';
-          trail.users.forEach(function(user) {
-            var displayName = user['name'] || user['email'];
-            if (!html.includes(displayName)) {
-              html += `
-                <div class="trail-user-box">
-                  <h4><a href="/users/${user['id']}" class="btn btn-warning trail-user">${displayName}</a></h4>
-                </div>
-              `;
-            }
-          });
+        if ($(`#trail-users-${trail.id}`).children().length == 0) {
+          // if users div is empty,
+          $(`#show-users-btn-${trail.id}`).text("Hide Hyykers");
+          if (trail.users.length) {
+            var html = '<h3 class="text-center">Hyykers</h3>';
+            trail.users.forEach(function(user) {
+              var displayName = user['name'] || user['email'];
+              if (!html.includes(displayName)) {
+                html += `
+                  <div class="trail-user-box">
+                    <h4><a href="/users/${user['id']}" class="btn btn-success trail-user">${displayName}</a></h4>
+                  </div>
+                `;
+              }
+            });
+          } else {
+            html = '<h3 class="text-center">No Hyykers Yet!</h3>';
+          }
           $(`#trail-users-${trail.id}`).html(html);
+        } else {
+          $(`#trail-users-${trail.id}`).empty();
+          $(`#show-users-btn-${trail.id}`).text("Show Hyykers");
         }
       });
     });
-  }
-
-  function Trail(id, name, location, distance, elevation, users) {
-    this.id = id;
-    this.name = name;
-    this.location = location;
-    this.distance = distance;
-    this.elevation = elevation;
-    this.users = users;
   }
 </script>
