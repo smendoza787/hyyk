@@ -19,11 +19,14 @@
     $('.show-users-btn').click(function() {
       var id = $(this).data("id");
       $.get(`/trails/${id}.json`)
-      .done(function(trail) {
-        var users = trail['users'];
-        if (users.length) {
+      .done(function(trailJSON) {
+        
+        // creating new Trail JS Object
+        var trail = $.extend(new Trail(), trailJSON);
+
+        if (trail.users.length) {
           var html = '<h3 class="text-center">Hyykers</h3>';
-          users.forEach(function(user) {
+          trail.users.forEach(function(user) {
             var displayName = user['name'] || user['email'];
             if (!html.includes(displayName)) {
               html += `
@@ -33,9 +36,18 @@
               `;
             }
           });
-          $(`#trail-users-${trail['id']}`).html(html);
+          $(`#trail-users-${trail.id}`).html(html);
         }
       });
     });
+  }
+
+  function Trail(id, name, location, distance, elevation, users) {
+    this.id = id;
+    this.name = name;
+    this.location = location;
+    this.distance = distance;
+    this.elevation = elevation;
+    this.users = users;
   }
 </script>
