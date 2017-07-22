@@ -60,8 +60,11 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  var currentTrailId = 0;
-  var lastTrailId = 0;
+  var lastTrailIndex = 0;
+  var trailsIdArray = null;
+  var currentIndex = null;
+  var currentTrailId = $('#next-trail-btn').data("id");
+
 
   $(function() {
     attachNextButton();
@@ -70,28 +73,36 @@
     // Get lastTrail ID so you wont load past the next trail
     $.get('/trails.json')
     .done(function(trails) {
-      lastTrailId = trails[trails.length - 1]['id'];
+      trailsIdArray = trails.map(function(trail) {
+        return trail['id'];
+      });
+      lastTrailIndex = trails.length - 1;
+      currentIndex = trailsIdArray.indexOf(currentTrailId);
     });
   });
 
   function attachNextButton() {
     $('#next-trail-btn').click(function(){
-      if ($(this).data("id") < lastTrailId) {
-        console.log(currentTrailId);
-        currentTrailId = $(this).data("id");
-        var worked = false;
-        getNextTrail((currentTrailId + 1));
+      if (currentIndex < lastTrailIndex) {
+        currentIndex++;
+        var nextTrailId = trailsIdArray[currentIndex];
+        currentTrailId = nextTrailId;
+        $('#next-trail-btn').attr("data-id", currentTrailId);
+        $('#prev-trail-btn').attr("data-id", currentTrailId);
+        getNextTrail(nextTrailId);
       }
     });
   }
 
   function attachPrevButton() {
     $('#prev-trail-btn').click(function(){
-      if ($(this).data("id") > 1) {
-        console.log(currentTrailId);
-        currentTrailId = $(this).data("id");
-        var worked = false;
-        getPrevTrail((currentTrailId - 1));
+      if (currentIndex > 0) {
+        currentIndex--;
+        var prevTrailId = trailsIdArray[currentIndex];
+        currentTrailId = prevTrailId;
+        $('#next-trail-btn').attr("data-id", prevTrailId);
+        $('#prev-trail-btn').attr("data-id", prevTrailId);
+        getPrevTrail(prevTrailId);
       }
     });
   }
@@ -99,28 +110,16 @@
   function getPrevTrail(id) {
     $.get(`/trails/${id}.json`)
     .done(function(trailJSON) {
-      worked = true;
       var trail = $.extend(new Trail(), trailJSON);
-      currentTrailId = trail.id;
       displayTrail(trail);
-    })
-    .error(function(error) {
-      // Unintentional Recursive Function to find the next available Trail
-      getPrevTrail((id - 1));
     });
   }
 
   function getNextTrail(id) {
     $.get(`/trails/${id}.json`)
     .done(function(trailJSON) {
-      worked = true;
       var trail = $.extend(new Trail(), trailJSON);
-      currentTrailId = trail.id;
       displayTrail(trail);
-    })
-    .error(function(error) {
-      // Unintentional Recursive Function to find the next available <<<Tr></Tr>a></Tra>i></Trai>  l
-      getNextTrail((id + 1));
     });
   }
 
@@ -133,6 +132,5 @@
     $('#trail-type').text(trail.trail_type);
     $('#next-trail-btn').attr("data-id", trail.id);
     $('#prev-trail-btn').attr("data-id", trail.id);
-    // $('#trail-').text(trail.);
   }
 </script>
