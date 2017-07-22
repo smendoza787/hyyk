@@ -1,6 +1,6 @@
 <div class="row text-center hike-title">
-  <h1><%= @trail.name %></h1>
-  <h3><%= @trail.location %></h3>
+  <h1 id="trail-name"><%= @trail.name %></h1>
+  <h3 id="trail-location"><%= @trail.location %></h3>
 </div>
 
 <% if @trail.created_by_user_id == current_user.id %>
@@ -25,39 +25,42 @@
 
 <div class="row text-center hike-info">
   <div class="col-md-3 hike-info-section">
-    <h2><%= "#{@trail.distance} mi." %></h2>
+    <h2 id="trail-distance"><%= "#{@trail.distance} mi." %></h2>
     <p>Distance</p>
   </div>
   <div class="col-md-3 hike-info-section">
-    <h2><%= "#{@trail.elevation} ft" %></h2>
+    <h2 id="trail-elevation"><%= "#{@trail.elevation} ft" %></h2>
     <p>Elevation</p>
   </div>
   <div class="col-md-3 hike-info-section">
-    <h2><%= @trail.trail_type %></h2>
+    <h2 id="trail-type"><%= @trail.trail_type %></h2>
     <p>Trail Type</p>
   </div>
   <div class="col-md-3 hike-info-section">
-    <h4>Have you hiked <%= @trail.name %>?</h4>
+    <h4>Have you hiked <span id="trail-name-span-1"><%= @trail.name %></span>?</h4>
     <p><%= link_to "Log Hike", new_trail_hike_path(@trail), class: "btn btn-info" %></p>
   </div>
 </div>
 
 <div class="row hyyker-title text-center">
-  <h2><%= @trail.name %> Hyykers</h2>
+  <h2><span id="trail-name-span-2"><%= @trail.name %></span> Hyykers</h2>
 </div>
 
 
 <div class="row hyyker-list">
   <div class="col-md-10 col-md-offset-1">
-    <% if @trail.users.any? %>
-      <%= render @trail.users.uniq %>
-    <% else %>
-      <h2 id="no-hikers" class="text-center">Looks like no Hyykers have hiked this trail yet!</h2>
-    <% end %>
+    <div id="trail-users">
+      <% if @trail.users.any? %>
+        <%= render @trail.users.uniq %>
+      <% else %>
+        <h2 id="no-hikers" class="text-center">Looks like no Hyykers have hiked this trail yet!</h2>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <script type="text/javascript" charset="utf-8">
+  var currentTrailId = 0;
   var lastTrailId = 0;
 
   $(function() {
@@ -74,17 +77,10 @@
   function attachNextButton() {
     $('#next-trail-btn').click(function(){
       if ($(this).data("id") < lastTrailId) {
-        var id = $(this).data("id");
+        console.log(currentTrailId);
+        currentTrailId = $(this).data("id");
         var worked = false;
-        getNextTrail((id + 1));
-        // $.get(`/trails/${id + 1}.json`)
-        // .done(function(trail) {
-        //   worked = true;
-        //   console.log("worked: ", worked);
-        // })
-        // .error(function(error) {
-        //   console.log("worked: ", worked);
-        // });
+        getNextTrail((currentTrailId + 1));
       }
     });
   }
@@ -92,41 +88,51 @@
   function attachPrevButton() {
     $('#prev-trail-btn').click(function(){
       if ($(this).data("id") > 1) {
-        var id = $(this).data("id");
+        console.log(currentTrailId);
+        currentTrailId = $(this).data("id");
         var worked = false;
-        getPrevTrail((id - 1));
-        // $.get(`/trails/${id - 1}.json`)
-        // .done(function(trail) {
-        //   worked = true;
-        //   console.log("worked", worked);
-        // })
-        // .error(function(error) {
-        //   console.log(error);
-        // });
+        getPrevTrail((currentTrailId - 1));
       }
     });
   }
 
   function getPrevTrail(id) {
     $.get(`/trails/${id}.json`)
-    .done(function(trail) {
+    .done(function(trailJSON) {
       worked = true;
-      console.log("worked: ", worked);
-      console.log(trail);
+      var trail = $.extend(new Trail(), trailJSON);
+      currentTrailId = trail.id;
+      displayTrail(trail);
     })
     .error(function(error) {
+      // Unintentional Recursive Function to find the next available Trail
       getPrevTrail((id - 1));
     });
   }
 
   function getNextTrail(id) {
     $.get(`/trails/${id}.json`)
-    .done(function(trail) {
+    .done(function(trailJSON) {
       worked = true;
-      console.log("worked: ", worked);
+      var trail = $.extend(new Trail(), trailJSON);
+      currentTrailId = trail.id;
+      displayTrail(trail);
     })
     .error(function(error) {
+      // Unintentional Recursive Function to find the next available <<<Tr></Tr>a></Tra>i></Trai>  l
       getNextTrail((id + 1));
     });
+  }
+
+  function displayTrail(trail) {
+    $('#trail-name').text(trail.name);
+    $('#trail-name-span-1').text(trail.name);
+    $('#trail-name-span-2').text(trail.name);
+    $('#trail-location').text(trail.location);
+    $('#trail-elevation').text(trail.elevation);
+    $('#trail-type').text(trail.trail_type);
+    $('#next-trail-btn').attr("data-id", trail.id);
+    $('#prev-trail-btn').attr("data-id", trail.id);
+    // $('#trail-').text(trail.);
   }
 </script>
