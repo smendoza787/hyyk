@@ -14,9 +14,8 @@ Rails.application.routes.draw do
   get '/users/trail_runner' => 'users#trail_runner'
   resources :users, only: [:show, :index]
   resources :trails do
-    # You would only create a hike through a trail show page
-    # You would always need a trail to create a hike, anyway
     resources :hikes
+    resources :users, only: [:show]
   end
 
 

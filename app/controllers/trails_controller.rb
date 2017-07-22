@@ -5,6 +5,10 @@ class TrailsController < ApplicationController
 
   def index
     @trails = Trail.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @trails }
+    end
   end
 
   def new
@@ -22,6 +26,10 @@ class TrailsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @trail }
+    end
   end
 
   def edit

@@ -1,11 +1,9 @@
-<div class="row footer-fix hyyk-index">
-  <div class="col-md-12 text-center hyyk-index-bg">
+<div class="row hyyk-index">
+  <div class="col-md-12 text-center">
     <h1 class="index-hyyker-text">Hyyker</h1>
     <h3>A simple hiking logger</h3>
     <% if user_signed_in? %>
-      <%= link_to trails_path, class: "btn btn-primary" do %>
-        <i class="fa fa-globe" aria-hidden="true"></i> All Trails
-      <% end %>
+      <button class="btn btn-primary"><i class="fa fa-globe" aria-hidden="true"></i> All Trails</button>
       <%= link_to new_trail_path, class: "btn btn-success" do %>
         <i class="fa fa-plus" aria-hidden="true"></i> Create a New Trail
       <% end %>
@@ -15,3 +13,4 @@
     <% end %>
   </div>
 </div>
+<div id="index-trails" class="footer-fix"></div>

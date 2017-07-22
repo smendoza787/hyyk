@@ -2,15 +2,9 @@
   <h1>Hyykers</h1>
 </div>
 <div class="row text-center class-method-buttons">
-  <%= link_to users_most_active_path, class: "btn btn-primary" do %>
-    <i class="fa fa-trophy" aria-hidden="true"></i> Current Most Active User
-  <% end %>
-  <%= link_to users_rock_climber_path, class: "btn btn-primary" do %>
-    <i class="fa fa-trophy" aria-hidden="true"></i> Current Rock Climber
-  <% end %>
-  <%= link_to users_trail_runner_path, class: "btn btn-primary" do %>
-    <i class="fa fa-trophy" aria-hidden="true"></i> Current Trail Runner
-  <% end %>
+  <button class="btn btn-primary" id="most-active-btn"><i class="fa fa-trophy" aria-hidden="true"></i> Current Most Active User</button>
+  <button id="rock-climber-btn" class="btn btn-primary"><i class="fa fa-trophy" aria-hidden="true"></i> Current Rock Climber</button>
+  <button id="trail-runner-btn" class="btn btn-primary"><i class="fa fa-trophy" aria-hidden="true"></i> Current Trail Runner</button>
 </div>
 
 <%= render @users %>

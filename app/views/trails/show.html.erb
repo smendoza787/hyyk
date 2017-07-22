@@ -43,7 +43,7 @@
     <% if @trail.users.any? %>
       <%= render @trail.users.uniq %>
     <% else %>
-      <h2 class="text-center">Looks like no Hyykers have hiked this trail yet!</h2>
+      <h2 id="no-hikers" class="text-center">Looks like no Hyykers have hiked this trail yet!</h2>
     <% end %>
   </div>
 </div>

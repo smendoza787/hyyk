@@ -17,6 +17,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'active_model_serializers'
 
 group :production do
   gem 'pg'

@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#no-hikers {
+  padding: 75px;
+}
+
 .trail-div {
   background-color: #1fdd81;
   box-shadow: 0 2px 3px black;
@@ -16,7 +20,13 @@
 .btn-success {
   color: #fff;
   background-color: #0bc5d8;
-  border-color: none;
+  border-color: #0bc5d8;
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #25a6b2;
+  border-color: #25a6b2;
 }
 
 body > div.container > div > div > div.trail-info > h2 > a {
@@ -104,11 +114,13 @@ body > div.container > div > div > div.trail-info > h2 > a {
   padding: 25px;
   border-radius: 10px 10px 0 0;
   color: white;
+  box-shadow: 0 2px 3px black;
 }
 
 .hyyker-list {
   background-color: #FCF4D9;
   border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 3px black;
 }
 
 .hyyker {

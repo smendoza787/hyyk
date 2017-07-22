@@ -6,8 +6,8 @@ class Trail < ApplicationRecord
   has_many :users, through: :hikes
 
   def hikes_attributes=(hikes_attributes)
-    #first save to check for errors and to get an ID for the trail
     if !hikes_attributes["0"]["date"].nil?
+      #first save to check for errors and to get an ID for the trail
       self.save
       hike = Hike.create(hikes_attributes["0"])
       hike.trail = self
