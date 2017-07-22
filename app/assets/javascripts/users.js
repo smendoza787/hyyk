@@ -1,26 +1,14 @@
-$(function() {
-  attachButtonListeners();
-});
+function User(id, name, email, hikes) {
+  this.id = id;
+  this.name = name;
+  this.email = email;
+  this.hikes = hikes;
+}
 
-function attachButtonListeners() {
-  $('#most-active-btn').click(function() {
-    $.get('/users/most_active')
-    .done(function(data) {
-      console.log(data);
-    });
-  });
+User.prototype.displayUrlPath = function() {
+  return `/users/${this.id}`;
+}
 
-  $('#trail-runner-btn').click(function() {
-    $.get('/users/trail_runner')
-    .done(function(data) {
-      console.log(data);
-    });
-  });
-
-  $('#rock-climber-btn').click(function() {
-    $.get('/users/rock_climber')
-    .done(function(data) {
-      console.log(data);
-    });
-  });
+User.prototype.displayNameOrEmail = function() {
+  return this.name || this.email;
 }
