@@ -14,6 +14,15 @@
   </div>
 <% end %>
 
+<div class="row text-center trail-ajax-nav">
+  <div class="col-md-6">
+    <button id="prev-trail-btn" class="btn btn-info form-control"><i class="fa fa-arrow-left" aria-hidden="true"></i> Load Previous Trail</button>
+  </div>
+  <div class="col-md-6">
+    <button id="next-trail-btn" class="btn btn-info form-control">Load Next Trail <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+  </div>
+</div>
+
 <div class="row text-center hike-info">
   <div class="col-md-3 hike-info-section">
     <h2><%= "#{@trail.distance} mi." %></h2>
