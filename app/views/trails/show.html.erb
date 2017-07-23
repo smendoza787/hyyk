@@ -142,16 +142,14 @@
       trail.users.forEach(function(userJSON) {
         var user = $.extend(new User(), userJSON);
         if (!html.includes(user.displayNameOrEmail())) {
-          html += `
-            <div class="hyyker text-center">
+          html += `<div class="hyyker text-center">
               <div class="hyyker-img">
                 <img src="http://placekitten.com/g/125/125" width="125" height="125">
               </div>
               <div class="hyyker-email">
                 <h3><a href="${user.displayUrlPath()}">${user.displayNameOrEmail()}</a></h3>
               </div>
-            </div>
-          `;
+            </div>`;
         }
       });
     } else {
