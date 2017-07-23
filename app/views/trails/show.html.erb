@@ -38,7 +38,7 @@
   </div>
   <div class="col-md-3 hike-info-section">
     <h4>Have you hiked <span id="trail-name-span-1"><%= @trail.name %></span>?</h4>
-    <p><%= link_to "Log Hike", new_trail_hike_path(@trail), class: "btn btn-info" %></p>
+    <p><%= link_to "Log Hike", new_trail_hike_path(@trail), class: "btn btn-info", id: "log-hike-btn" %></p>
   </div>
 </div>
 
@@ -100,8 +100,8 @@
         currentIndex--;
         var prevTrailId = trailsIdArray[currentIndex];
         currentTrailId = prevTrailId;
-        $('#next-trail-btn').attr("data-id", prevTrailId);
-        $('#prev-trail-btn').attr("data-id", prevTrailId);
+        $('#next-trail-btn').attr("data-id", currentTrailId);
+        $('#prev-trail-btn').attr("data-id", currentTrailId);
         getPrevTrail(prevTrailId);
       }
     });
@@ -127,10 +127,36 @@
     $('#trail-name').text(trail.name);
     $('#trail-name-span-1').text(trail.name);
     $('#trail-name-span-2').text(trail.name);
+    $('#trail-distance').text(`${trail.distance} mi.`);
     $('#trail-location').text(trail.location);
-    $('#trail-elevation').text(trail.elevation);
+    $('#trail-elevation').text(`${trail.elevation} ft`);
     $('#trail-type').text(trail.trail_type);
     $('#next-trail-btn').attr("data-id", trail.id);
     $('#prev-trail-btn').attr("data-id", trail.id);
+    $('#trail-users').html(displayHikers(trail));
+  }
+
+  function displayHikers(trail) {
+    var html = "";
+    if (trail.users.length > 0) {
+      trail.users.forEach(function(userJSON) {
+        var user = $.extend(new User(), userJSON);
+        if (!html.includes(user.displayNameOrEmail())) {
+          html += `
+            <div class="hyyker text-center">
+              <div class="hyyker-img">
+                <img src="http://placekitten.com/g/125/125" width="125" height="125">
+              </div>
+              <div class="hyyker-email">
+                <h3><a href="${user.displayUrlPath()}">${user.displayNameOrEmail()}</a></h3>
+              </div>
+            </div>
+          `;
+        }
+      });
+    } else {
+      html += '<h2 id="no-hikers" class="text-center">Looks like no Hyykers have hiked this trail yet!</h2>';
+    }
+    return html;
   }
 </script>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :hikes
     resources :users, only: [:show]
   end
+  post '/trails/:id' => 'comments#create'
 
 
 
