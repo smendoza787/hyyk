@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navigationbar">
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li class="navbar-text">Signed in as <%= current_user.name_or_email %>!</li>
+            <li class="navbar-text">Signed in as <%= current_user.email %>!</li>
             <li>
               <%= link_to current_user do %>
                 <i class="fa fa-user-o" aria-hidden="true"></i> Profile

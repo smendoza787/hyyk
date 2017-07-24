@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/users/most_active' => 'users#most_active'
   get '/users/rock_climber' => 'users#rock_climber'
   get '/users/trail_runner' => 'users#trail_runner'
-  resources :users, only: [:show, :index, :edit, :update]
+  resources :users, only: [:show, :index]
   resources :trails do
     resources :hikes
     resources :users, only: [:show]
