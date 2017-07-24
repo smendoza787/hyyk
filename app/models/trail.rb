@@ -4,6 +4,7 @@ class Trail < ApplicationRecord
 
   has_many :hikes
   has_many :users, through: :hikes
+  has_many :comments
 
   def hikes_attributes=(hikes_attributes)
     if !hikes_attributes["0"]["date"].nil?
