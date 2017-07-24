@@ -35,7 +35,7 @@
               var user = $.extend(new User(), userJSON);
               if (!html.includes(user.displayNameOrEmail())) {
                 html += '<div class="trail-user-box">';
-                html += '<h4>${user.displayNameOrEmail()}</h4>';
+                html += '<h4>' + user.displayNameOrEmail() + '</h4>';
                 html += '<a href="' + user.displayUrlPath() + '" class="btn btn-success trail-user">View Profile</a>';
                 html += '</div>';
               }
