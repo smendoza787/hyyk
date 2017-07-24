@@ -39,7 +39,7 @@
   <div class="col-md-3 hike-info-section">
     <h4>Have you hiked <span class="trail-name-span"><%= @trail.name %></span>?</h4>
     <div id="log-hike-btn">
-      <p><%= link_to "Log Hike", new_trail_hike_path(@trail), class: "btn btn-info", id: "log-hike-btn" %></p>
+      <p><%= link_to "Log Hike", new_trail_hike_path(@trail), class: "btn btn-warning", id: "log-hike-btn" %></p>
     </div>
   </div>
 </div>
@@ -154,7 +154,7 @@
     // putting data into variables because heroku doesnt like template literals
     var distanceText = trail.distance + " mi."
     var elevationText = trail.elevation + " ft"
-    var logHikeBtn = '<a href="/trails/' + trail.id + '/hikes/new" class="btn btn-info">Log Hike</a>';
+    var logHikeBtn = '<a href="/trails/' + trail.id + '/hikes/new" class="btn btn-warning">Log Hike</a>';
     $('#trail-distance').text(distanceText);
     $('#trail-elevation').text(elevationText);
     $('#trail-name').text(trail.name);
@@ -171,14 +171,17 @@
 
   function displayComments(trail) {
     var html = '';
-    console.log(trail.comments);
-    trail.comments.forEach(function(commentJSON) {
-      var comment = $.extend(new Comment(), commentJSON);
-      html += '<div class="trail-comment">';
-      html += '<h4>' + comment.content + '</h4>';
-      html += '<a href="/users/' + comment.userId + '">Hyyker</a>';
-      html += '</div>'
-    });
+    if (trail.comments.length > 0) {
+      trail.comments.forEach(function(commentJSON) {
+        var comment = $.extend(new Comment(), commentJSON);
+        html += '<div class="trail-comment">';
+        html += '<h4>' + comment.content + '</h4>';
+        html += '<a href="/users/' + comment.userId + '">Hyyker</a>';
+        html += '</div>'
+      });
+    } else {
+        html += '<h2 id="no-hikers" class="text-center">No comments yet!</h2>';
+    }
     return html;
   }
 
@@ -233,11 +236,11 @@
       var commentId = $(this).data("id");
       var url = '/trails/' + trailId + '/comments/' + commentId;
       $.ajax({
-          url: url,
-          type: 'DELETE',
-          success: function(result) {
-              $(thisComment).hide();
-          }
+        url: url,
+        type: 'DELETE',
+        success: function(result) {
+            $(thisComment).hide();
+        }
       });
     });
   });
