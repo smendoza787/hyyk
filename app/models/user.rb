@@ -43,6 +43,14 @@ class User < ApplicationRecord
     total_elevation
   end
 
+  def name_or_email
+    if self.name
+      return self.name
+    else
+      return self.email
+    end
+  end
+
   def longest_hike
     self.trails.order("distance").last || 0
   end
