@@ -108,7 +108,8 @@
   }
 
   function getPrevTrail(id) {
-    $.get(`/trails/${id}.json`)
+    var trailJsonUrl = "/trails/" + id + ".json";
+    $.get(trailJsonUrl)
     .done(function(trailJSON) {
       var trail = $.extend(new Trail(), trailJSON);
       displayTrail(trail);
@@ -116,7 +117,8 @@
   }
 
   function getNextTrail(id) {
-    $.get(`/trails/${id}.json`)
+    var trailJsonUrl = "/trails/" + id + ".json";
+    $.get(trailJsonUrl)
     .done(function(trailJSON) {
       var trail = $.extend(new Trail(), trailJSON);
       displayTrail(trail);
@@ -124,12 +126,15 @@
   }
 
   function displayTrail(trail) {
+    // putting data into variables because heroku doesnt like template literals
+    var distanceText = trail.distance + " mi."
+    var elevationText = trail.elevation + " ft"
+    $('#trail-distance').text(distanceText);
+    $('#trail-elevation').text(elevationText);
     $('#trail-name').text(trail.name);
     $('#trail-name-span-1').text(trail.name);
     $('#trail-name-span-2').text(trail.name);
-    $('#trail-distance').text(`${trail.distance} mi.`);
     $('#trail-location').text(trail.location);
-    $('#trail-elevation').text(`${trail.elevation} ft`);
     $('#trail-type').text(trail.trail_type);
     $('#next-trail-btn').attr("data-id", trail.id);
     $('#prev-trail-btn').attr("data-id", trail.id);
@@ -142,14 +147,25 @@
       trail.users.forEach(function(userJSON) {
         var user = $.extend(new User(), userJSON);
         if (!html.includes(user.displayNameOrEmail())) {
-          html += `<div class="hyyker text-center">
-              <div class="hyyker-img">
-                <img src="http://placekitten.com/g/125/125" width="125" height="125">
-              </div>
-              <div class="hyyker-email">
-                <h3><a href="${user.displayUrlPath()}">${user.displayNameOrEmail()}</a></h3>
-              </div>
-            </div>`;
+          html += '<div class="hyyker text-center">';
+          html += '<div class="hyyker-img">';
+          html += '<img src="http://placekitten.com/g/125/125" width="125" height="125">';
+          html += '</div>';
+          html += '<div class="hyyker-email">';
+          html += '<h3><a href="${user.displayUrlPath()}">' + user.displayNameOrEmail() + '</a></h3>';
+          html += '</div>';
+          html += '</div>';
+
+          // html += `
+          //   <div class="hyyker text-center">
+          //     <div class="hyyker-img">
+          //       <img src="http://placekitten.com/g/125/125" width="125" height="125">
+          //     </div>
+          //     <div class="hyyker-email">
+          //       <h3><a href="${user.displayUrlPath()}">${user.displayNameOrEmail()}</a></h3>
+          //     </div>
+          //   </div>
+          // `;
         }
       });
     } else {

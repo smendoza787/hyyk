@@ -18,34 +18,35 @@
   function attachShowUsers() {
     $('.show-users-btn').click(function() {
       var id = $(this).data("id");
-      $.get(`/trails/${id}.json`)
+      var json = "/trails/" + id + ".json"
+      $.get(json)
       .done(function(trailJSON) {
         // creating new Trail JS Object
         var trail = $.extend(new Trail(), trailJSON);
 
-        if ($(`#trail-users-${trail.id}`).children().length == 0) {
+        var trailUsersId = "#trail-users-" + trail.id;
+        var showUsersBtn = "#show-users-btn-" + trail.id;
+        if ($(trailUsersId).children().length == 0) {
           // if users div is empty,
-          $(`#show-users-btn-${trail.id}`).text("Hide Hyykers");
+          $(showUsersBtn).text("Hide Hyykers");
           if (trail.users.length) {
             var html = '<h3 class="text-center">Hyykers</h3>';
             trail.users.forEach(function(userJSON) {
               var user = $.extend(new User(), userJSON);
               if (!html.includes(user.displayNameOrEmail())) {
-                html += `
-                  <div class="trail-user-box">
-                    <h4>${user.displayNameOrEmail()}</h4>
-                    <a href="${user.displayUrlPath()}" class="btn btn-success trail-user">View Profile</a>
-                  </div>
-                `;
+                html += '<div class="trail-user-box">';
+                html += '<h4>${user.displayNameOrEmail()}</h4>';
+                html += '<a href="' + user.displayUrlPath() + '" class="btn btn-success trail-user">View Profile</a>';
+                html += '</div>';
               }
             });
           } else {
             html = '<h3 class="text-center">No Hyykers Yet!</h3>';
           }
-          $(`#trail-users-${trail.id}`).html(html);
+          $(trailUsersId).html(html);
         } else {
-          $(`#trail-users-${trail.id}`).empty();
-          $(`#show-users-btn-${trail.id}`).text("Show Hyykers");
+          $(trailUsersId).empty();
+          $(showUsersBtn).text("Show Hyykers");
         }
       });
     });
