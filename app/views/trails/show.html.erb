@@ -38,7 +38,9 @@
   </div>
   <div class="col-md-3 hike-info-section">
     <h4>Have you hiked <span id="trail-name-span-1"><%= @trail.name %></span>?</h4>
-    <p><%= link_to "Log Hike", new_trail_hike_path(@trail), class: "btn btn-info", id: "log-hike-btn" %></p>
+    <div id="log-hike-btn">
+      <p><%= link_to "Log Hike", new_trail_hike_path(@trail), class: "btn btn-info", id: "log-hike-btn" %></p>
+    </div>
   </div>
 </div>
 
@@ -129,6 +131,7 @@
     // putting data into variables because heroku doesnt like template literals
     var distanceText = trail.distance + " mi."
     var elevationText = trail.elevation + " ft"
+    var logHikeBtn = '<a href="/trails/' + trail.id + '/hikes/new" class="btn btn-info">Log Hike</a>';
     $('#trail-distance').text(distanceText);
     $('#trail-elevation').text(elevationText);
     $('#trail-name').text(trail.name);
@@ -139,6 +142,7 @@
     $('#next-trail-btn').attr("data-id", trail.id);
     $('#prev-trail-btn').attr("data-id", trail.id);
     $('#trail-users').html(displayHikers(trail));
+    $('#log-hike-btn').html(logHikeBtn);
   }
 
   function displayHikers(trail) {
