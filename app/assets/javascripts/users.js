@@ -6,7 +6,8 @@ function User(id, name, email, hikes) {
 }
 
 User.prototype.displayUrlPath = function() {
-  return `/users/${this.id}`;
+  var str = '/users/' + this.id;
+  return str;
 }
 
 User.prototype.displayNameOrEmail = function() {
