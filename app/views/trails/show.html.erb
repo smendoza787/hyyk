@@ -72,14 +72,14 @@
       <% end %>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 comment-form">
     <h3>Leave a comment on this trail:</h3>
     <%= form_for([@trail, @comment]) do |f| %>
       <%= f.hidden_field :trail_id, value: @trail.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :user_email, value: current_user.email %>
       <%= f.text_area :content, class: "form-control" %><br>
-      <%= f.submit "Post Comment", class: "btn btn-success form-control" %>
+      <%= f.submit "Post Comment", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>
@@ -205,6 +205,21 @@
         html += '<p>You commented!</p>';
         html += '</div>';
         $('#trail-comments').append(html);
+      });
+    });
+
+    $('.comment-delete-btn').click(function(e) {
+      e.preventDefault();
+      var trailId = $('#comment_trail_id').val();
+      var thisComment = $(this).parent();
+      var commentId = $(this).data("id");
+      var url = '/trails/' + trailId + '/comments/' + commentId;
+      $.ajax({
+          url: url,
+          type: 'DELETE',
+          success: function(result) {
+              $(thisComment).hide();
+          }
       });
     });
   });
