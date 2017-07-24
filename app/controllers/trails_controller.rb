@@ -26,6 +26,8 @@ class TrailsController < ApplicationController
   end
 
   def show
+    @comments = @trail.comments
+    @comment = Comment.new
     respond_to do |format|
       format.html
       format.json { render json: @trail }

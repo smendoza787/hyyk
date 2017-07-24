@@ -47,8 +47,6 @@
 <div class="row hyyker-title text-center">
   <h2><span id="trail-name-span-2"><%= @trail.name %></span> Hyykers</h2>
 </div>
-
-
 <div class="row hyyker-list">
   <div class="col-md-10 col-md-offset-1">
     <div id="trail-users">
@@ -58,6 +56,31 @@
         <h2 id="no-hikers" class="text-center">Looks like no Hyykers have hiked this trail yet!</h2>
       <% end %>
     </div>
+  </div>
+</div>
+
+<div class="row hyyker-title text-center">
+  <h2><span id="trail-name-span-2"><%= @trail.name %></span> Trail Comments</h2>
+</div>
+<div class="row hyyker-list">
+  <div class="col-md-8">
+    <div id="trail-comments">
+      <% if @comments.any? %>
+        <%= render @comments %>
+      <% else %>
+        <h2 id="no-hikers" class="text-center">No comments yet!</h2>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>Leave a comment on this trail:</h3>
+    <%= form_for([@trail, @comment]) do |f| %>
+      <%= f.hidden_field :trail_id, value: @trail.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :user_email, value: current_user.email %>
+      <%= f.text_area :content, class: "form-control" %><br>
+      <%= f.submit "Post Comment", class: "btn btn-success form-control" %>
+    <% end %>
   </div>
 </div>
 
@@ -166,4 +189,23 @@
     }
     return html;
   }
+
+  // HANDLE COMMENT SUBMISSION
+  $(function() {
+    $('form').submit(function(e){
+      e.preventDefault();
+      var trailId = $('#comment_trail_id').val();
+      var values = $(this).serialize();
+      var posting = $.post("/trails/" + trailId + "/comments", values);
+      posting.done(function(data){
+        var comment = $.extend(new Comment(), data);
+        console.log(comment.createdAt)
+        var html = '<div class="trail-comment">';
+        html += '<h4>' + comment.content + '</h4>';
+        html += '<p>You commented!</p>';
+        html += '</div>';
+        $('#trail-comments').append(html);
+      });
+    });
+  });
 </script>
