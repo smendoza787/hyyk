@@ -2,7 +2,7 @@
 
 ## About
 
-Track all of your favorite hikes and activities! This app was built with a Rails API backend and hooked up to a JQuery frontend. I had a lot of fun making this app and learned a ton, and in the near future I hope to  add more features from 3rd Party APIs like Google Maps and Yelp.
+Track all of your favorite hikes and activities! This app was built with a Rails API backend and hooked up to a JQuery frontend. I had a lot of fun making this app and learned a ton, and in the near future I hope to  add more features from 3rd Party APIs like Google Maps (For maps, duh.) and Yelp (To suggest local gas stations, restaurants or convenience stores.).
 
 ## Usage
 
