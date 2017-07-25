@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'active_model_serializers'
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :production do
   gem 'pg'
