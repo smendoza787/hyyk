@@ -1,6 +1,8 @@
 <div class="row text-center hike-title">
-  <h1 id="trail-name"><%= @trail.name %></h1>
-  <h3 id="trail-location"><%= @trail.location %></h3>
+  <div class="inner-box">
+    <h1 id="trail-name"><%= @trail.name %></h1>
+    <h3 id="trail-location"><%= @trail.location %></h3>
+  </div>
 </div>
 
 <% if @trail.created_by_user_id == current_user.id %>

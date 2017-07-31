@@ -1,25 +1,27 @@
-<div class="row text-center">
-  <div class="col-md-6 hike-info-section hike-div">
-    <h3><%= hike.date.strftime("%A, %B %d, %Y") %></h3>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <div class="trail-stuff text-center">
-      <p>Trail</p>
-      <h3><%= link_to hike.trail.name, hike.trail %></h3>
-      <p>Distance Hiked</p>
-      <h3><%= hike.trail.distance %> mi</h3>
-      <p>Elevation Gained</p>
-      <h3><%= hike.trail.elevation %> ft</h3>
+<div class="hike-wrapper">
+  <div class="row text-center hike-div">
+    <div class="col-md-6 hike-info-section">
+      <h3><%= hike.date.strftime("%A, %B %d, %Y") %></h3>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="trail-stuff text-center">
+        <p>Trail</p>
+        <h3><%= link_to hike.trail.name, hike.trail %></h3>
+        <p>Distance Hiked</p>
+        <h3><%= hike.trail.distance %> mi</h3>
+        <p>Elevation Gained</p>
+        <h3><%= hike.trail.elevation %> ft</h3>
+      </div>
+    </div>
+  </div>
 
-<% if hike.user == current_user %>
+  <% if hike.user == current_user %>
   <div class="row">
     <div class="col-md-12 text-center">
       <%= button_to "Delete", trail_hike_path(hike.trail, hike), method: :delete, class: "btn btn-danger hyyk-delete form-control" %>
     </div>
   </div>
-<% end %>
+  <% end %>
+</div>

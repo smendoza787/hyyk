@@ -3,7 +3,7 @@
     <h1><%= @user.email %>'s Hyyking Page</h1>
   </div>
 
-  <h2 class="text-center">Stats</h2>
+  <h1 class="text-center"><i class="fa fa-area-chart" aria-hidden="true"></i> Stats</h1>
 
   <div class="row text-center hike-info">
     <div class="col-md-4 hike-info-section">
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <h2 class="text-center"><i class="fa fa-trophy" aria-hidden="true"></i> Personal Records <i class="fa fa-trophy" aria-hidden="true"></i></h2>
+  <h1 class="text-center"><i class="fa fa-trophy" aria-hidden="true"></i> Personal Records</h1>
 
   <div class="row hyyk-records text-center">
     <% if @user.hikes.any? %>
@@ -37,7 +37,7 @@
     <% end %>
   </div>
 
-  <h2 class="text-center">Hyyks</h2>
+  <h1 class="text-center">Hyyks</h1>
   <% if @user.hikes.any? %>
     <%= render @user.hikes %>
   <% else %>
