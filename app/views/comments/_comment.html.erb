@@ -1,8 +1,12 @@
 <div class="trail-comment">
-  <h4><%= comment.content %></h4>
-  <a href="/users/<%= comment.user.id %>"><%= comment.user.email %></a>
-  <p><%= comment.created_at.strftime("%l:%M%P - %b %d, %Y") %></p>
+  <div class="comment-body">
+    <a href="/users/<%= comment.user.id %>"><%= comment.user.email %></a>
+  </div>
+  <div class="comment-info">
+    <h4><%= comment.content %></h4>
+    <p><%= comment.created_at.strftime("%l:%M%P - %b %d, %Y") %></p>
+  </div>
   <% if comment.user.id == current_user.id %>
-    <a href="#" class="btn btn-danger comment-delete-btn text-right" data-id="<%= comment.id %>">Delete Comment</a>
+  <a href="#" class="comment-delete-btn text-right" data-id="<%= comment.id %>">Delete</a>
   <% end %>
 </div>

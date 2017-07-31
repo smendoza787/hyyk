@@ -1,20 +1,22 @@
 <div class="hyyker text-center">
   <div class="hyyker-img">
-    <%= image_tag "http://placekitten.com/g/125/125", size: "80x80" %>
+    <%= image_tag "http://placekitten.com/g/175/175", size: "175x175" %>
   </div>
-  <div class="hyyker-email">
-    <h3><%= link_to user.email, user %></h3>
-  </div>
-  <div class="hyyker-stats">
-    <h3><%= user.total_distance_hiked %> mi</h3>
-    <p>Miles Hiked</p>
-  </div>
-  <div class="hyyker-stats">
-    <h3><%= user.total_hikes %></h3>
-    <p>Total Hikes</p>
-  </div>
-  <div class="hyyker-stats">
-    <h3><%= user.total_elevation_climbed %> ft</h3>
-    <p>Total Elevation Climbed</p>
+  <div class="hyyker-info">
+    <div class="hyyker-email">
+      <h3><%= link_to user.email, user %></h3>
+    </div>
+    <div class="hyyker-stats">
+      <h4><%= user.total_distance_hiked %> mi</h4>
+      <p>Miles Hiked</p>
+    </div>
+    <div class="hyyker-stats">
+      <h4><%= user.total_hikes %></h4>
+      <p>Total Hikes</p>
+    </div>
+    <div class="hyyker-stats">
+      <h4><%= user.total_elevation_climbed %> ft</h4>
+      <p>Total Elevation Climbed</p>
+    </div>
   </div>
 </div>

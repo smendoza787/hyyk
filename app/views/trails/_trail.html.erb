@@ -6,12 +6,18 @@
       <p><i class="fa fa-location-arrow" aria-hidden="true"></i> <%= trail.location %></p>
     </div>
     <div class="trail-attributes">
-      <h3><%= "#{trail.distance} mi." %></h3>
-      <p>Distance</p>
-      <h3><%= "#{trail.elevation} ft" %></h3>
-      <p>Elevation</p>
-      <h3><%= trail.trail_type %></h3>
-      <p>Trail Type</p>
+      <div class="trail-attributes-child">
+        <h3><%= "#{trail.distance} mi." %></h3>
+        <p>Distance</p>
+      </div>
+      <div class="trail-attributes-child">
+        <h3><%= "#{trail.elevation} ft" %></h3>
+        <p>Elevation</p>
+      </div>
+      <div class="trail-attributes-child">
+        <h3><%= trail.trail_type %></h3>
+        <p>Trail Type</p>
+      </div>
     </div>
   </div>
   <button id="show-users-btn-<%= trail.id %>" class="show-users-btn btn btn-danger" data-id="<%= trail.id %>" data-dropped="false">Show Hyykers</button>

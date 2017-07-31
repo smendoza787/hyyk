@@ -45,10 +45,15 @@
 </div>
 
 <div class="row hyyker-title text-center">
-  <h2><span class="trail-name-span"><%= @trail.name %></span> Hyykers</h2>
+  <div class="col-md-6">
+    <h2><span class="trail-name-span"><%= @trail.name %></span> Hyykers</h2>
+  </div>
+  <div class="col-md-6">
+    <h2><span class="trail-name-span"><%= @trail.name %></span> Trail Comments</h2>
+  </div>
 </div>
 <div class="row hyyker-list">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-6">
     <div id="trail-users">
       <% if @trail.users.any? %>
         <%= render @trail.users.uniq %>
@@ -57,13 +62,7 @@
       <% end %>
     </div>
   </div>
-</div>
-
-<div class="row hyyker-title text-center">
-  <h2><span class="trail-name-span"><%= @trail.name %></span> Trail Comments</h2>
-</div>
-<div class="row hyyker-list">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6">
     <div id="trail-comments">
       <% if @comments.any? %>
         <%= render @comments %>
@@ -71,18 +70,19 @@
         <h2 id="no-hikers" class="text-center">No comments yet!</h2>
       <% end %>
     </div>
+    <div class="comment-form">
+      <h3>Leave a comment on this trail:</h3>
+      <%= form_for([@trail, @comment]) do |f| %>
+      <%= f.hidden_field :trail_id, value: @trail.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :user_email, value: current_user.email %>
+      <%= f.text_area :content, class: "form-control" %><br>
+      <%= f.submit "Post Comment", class: "btn btn-success" %>
+      <% end %>
+    </div>
   </div>
 </div>
-<div class="comment-form">
-  <h3>Leave a comment on this trail:</h3>
-  <%= form_for([@trail, @comment]) do |f| %>
-    <%= f.hidden_field :trail_id, value: @trail.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :user_email, value: current_user.email %>
-    <%= f.text_area :content, class: "form-control" %><br>
-    <%= f.submit "Post Comment", class: "btn btn-success" %>
-  <% end %>
-</div>
+
 
 <script type="text/javascript" charset="utf-8">
   var lastTrailIndex = 0;
@@ -216,7 +216,7 @@
       var posting = $.post("/trails/" + trailId + "/comments", values);
       posting.done(function(data){
         var comment = $.extend(new Comment(), data);
-        console.log(comment.createdAt)
+        console.log(comment.user_id)
         var html = '<div class="trail-comment">';
         html += '<h4>' + comment.content + '</h4>';
         html += '<p>You just commented!</p>';
