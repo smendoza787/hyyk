@@ -19,17 +19,14 @@ class UsersController < ApplicationController
 
   def most_active
     @user = User.most_active
-    render json: @user
   end
 
   def trail_runner
     @user = User.trail_runner
-    render json: @user
   end
 
   def rock_climber
     @user = User.rock_climber
-    render json: @user
   end
 
   private

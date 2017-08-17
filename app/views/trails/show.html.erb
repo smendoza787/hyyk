@@ -218,16 +218,16 @@
       var posting = $.post("/trails/" + trailId + "/comments", values);
       posting.done(function(data){
         var comment = $.extend(new Comment(), data);
-        console.log(comment.user_id)
         var html = '<div class="trail-comment">';
         html += '<h4>' + comment.content + '</h4>';
-        html += '<p>You just commented!</p>';
+        html += '<p>' + new Date(Date.now()) + '</p>';
         html += '</div>';
         if ($('#no-hikers').length) {
           $('#trail-comments').html(html);
         } else {
           $('#trail-comments').append(html);
         }
+        $('#comment_content').val('');
       });
     });
 
